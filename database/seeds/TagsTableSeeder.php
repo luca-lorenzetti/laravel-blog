@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Tag;
+use Illuminate\SUpport\Str;
 
 class TagsTableSeeder extends Seeder
 {
@@ -26,9 +27,13 @@ class TagsTableSeeder extends Seeder
 
         foreach ($tags as $tag) {
 
-            $newTag = new Tag($tag);
+            $newTag = new Tag();
+            $newTag->name = $tag;
+            
+            $newTag->slug = Str::slug($newTag->name, '-');
+
             $newTag->save();
         }
 
-    
+    }   
 }
