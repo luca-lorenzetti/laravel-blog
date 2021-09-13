@@ -10002,3 +10002,14 @@ h3 {
     border-color: #dee2e6;
   }
 }
+ul {
+  list-style: none;
+}
+ul img {
+  max-width: 400px;
+}
+
+.card-body h2 {
+  padding: 30px;
+  position: absolute;
+}
