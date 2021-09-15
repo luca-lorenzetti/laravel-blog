@@ -1,7 +1,26 @@
 .post{
     margin-top: 0px;
+
+    .header_post{
+        position: relative;
+
+    
+        .cover{
+            position: relative;
+        }
+        .cover::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+    }
+  
     .content_post{
-        margin-top: 50px;
         padding: 0px 30px;
     }
 }

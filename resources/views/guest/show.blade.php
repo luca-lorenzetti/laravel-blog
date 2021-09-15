@@ -7,15 +7,18 @@
             <div class="card">
                 <div class="post">
                         
-                        <div class="header_post">
+                        <div class="header_post d-block w-100">
                             <h2>{{$post->title}}</h2>
                             <div class="date">
                                 {{date('d/m/Y',strtotime($post->date))}}
                             </div>
                             {{$post->user->name}}
+                            <div class="cover d-block w-100">
+                                <img class="d-block w-100" src="{{asset('storage/' . $post->image)}}" alt="post-image">
 
+                            </div>
                         </div>
-                        <img class="d-block w-100" src="{{asset('storage/' . $post->image)}}" alt="post-image">
+                        
                     <div class="content_post">
 
                         <ul>
@@ -23,7 +26,8 @@
                                 <li>{{$tag->name}}</li>
                             @endforeach
                         </ul>
-                        {{$post->content}}
+                        <p>{{$post->content}}</p>
+                        
                     </div>
 
 
