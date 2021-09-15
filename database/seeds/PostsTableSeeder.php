@@ -22,15 +22,13 @@ class PostsTableSeeder extends Seeder
         foreach ($users as $user) {
 
             if( (rand(0, 1)%2) == 0 ){
-                $numTagsEntered = 0;
-                $tagsEntered = [];
                 
                 for ($i=0; $i < rand(0, 10); $i++) { 
                     
                     $post = new Post();
 
                     $post->title = $faker->sentence();
-                    $post->content = $faker->realText( rand(200, 1000) );
+                    $post->content = $faker->realText( rand(1000, 10000) );
                     $post->date = $faker->date();
                     $post->slug = Str::slug($post->title, '-');
                     $post->published = rand(0, 1);
@@ -39,30 +37,40 @@ class PostsTableSeeder extends Seeder
                     $post->user_id = $user->id;
 
 
-                    $maxTags = rand(1,count($tags) );
-                    $idTagsEntered = [];
+                    $maxTags = rand(1, 5);
+                    // $idTagsEntered = [];
+                    $tagsEntered = [];
+                    $numTagsEntered = 0;
 
-                    
+
+                    $post->save();
+
                     while($numTagsEntered <= $maxTags){
                         
                         $idTag = rand(0, count($tags)-1);
 
                   
-                        if( !in_array($idTag, array($idTagsEntered)) ){ 
-                            $idTagsEntered = $idTag;
-                            $tagsEntered = $tags[$idTag];
+                        if( !$this->tagAlreadyInserted($tagsEntered, $idTag) ){ 
+                            $tagsEntered[] = $idTag;
+                            $post->tags()->attach($tags[$idTag]) ;
+                            $numTagsEntered++;
                         }
-
-                        $numTagsEntered++;
                     }
-
-                    $post->save();
-                    $post->tags()->attach($tagsEntered);
-
-
                 }
 
             }
         }
+    }
+
+
+
+    public function tagAlreadyInserted($array, $element){
+        
+        foreach ($array as $value) {
+            if($value == $element){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -31,6 +31,7 @@ class CommentsTableSeeder extends Seeder
                     // To decide if user is not registered
                     rand(0, 10) >= 8 ? $newComment->user_id = null : $newComment->user_id = $users[rand(0, count($users)-1)]->id;
     
+
                     $newComment->save();
                 }
 

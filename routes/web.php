@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'BlogController@check')->name('home');
+//Guest
+Route::prefix('/')->group(function(){
+    Route::get('', 'BlogController@check')->name('guest.home');
+    Route::get('posts/{slug}', 'Guest\PostController@show')->name('guest.posts.show');
+});
+

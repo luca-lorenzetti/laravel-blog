@@ -10009,7 +10009,62 @@ ul img {
   max-width: 400px;
 }
 
-.card-body h2 {
+.last_posts, .post {
+  position: relative;
+  margin-top: 30px;
+}
+.last_posts .header_post, .post .header_post {
   padding: 30px;
   position: absolute;
+}
+.last_posts .header_post .excerpt, .post .header_post .excerpt {
+  padding-top: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+.last_posts a, .post a {
+  z-index: 3;
+  color: red !important;
+}
+.last_posts .overlay, .post .overlay {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.last_posts .overlay:hover, .post .overlay:hover {
+  cursor: pointer;
+}
+
+.all_posts {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.post {
+  margin-top: 0px;
+}
+.post .content_post {
+  margin-top: 50px;
+  padding: 0px 30px;
+}
+
+.comments {
+  margin-top: 50px;
+  padding: 0px 30px;
+}
+.comments h3 {
+  margin-bottom: 30px;
+}
+.comments .comment {
+  margin: 0;
+}
+.comments .comment .content_comment {
+  padding: 0px 10px;
 }
